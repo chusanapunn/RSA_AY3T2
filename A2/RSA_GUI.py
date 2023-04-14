@@ -3,50 +3,38 @@ import math
 import pybase64 
 import NewLogic as NL
 
-
-
-
-
-
 def GUI():
-
-    
     def display(): 
+
+        #get p,q input
         p = myentry1.get()
         q = myentry2.get()
 
+        #convert input to int
         p = int(p)
         q = int(q)
 
-        
-
-
+        #check if it is prime
         check_p = NL.prime_check(p)
         check_q = NL.prime_check(q)
-
+        #If not
         if((check_p==False)or(check_q==False)):
            quit()
 
 
         window =tk.Toplevel(root)
-        NL.n_value(p,q)
-        NL.r_value
-      
-
-
-
-
-
-
- 
-
+        # find n RSA modulus
+        n=NL.n_value(p,q)
+        # Eulers Toitent Function 
+        r=NL.r_value(p,q)
+        print(n,r)
     #Creating Window
     root = tk.Tk()
     
 
 
     #Window Size 
-    root.geometry("1000x1000+50+50")
+    root.geometry("600x600+50+50")
 
     #Window Title
     root.title("RSA GUI")

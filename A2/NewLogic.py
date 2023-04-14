@@ -7,9 +7,6 @@ global p
 global q 
 global r 
 
-
-
-
 def input_prime(p,q):
     print("PLEASE ENTER THE 'p' AND 'q' VALUES BELOW:")
     p = int(input("Enter a prime number for p: "))
@@ -25,34 +22,26 @@ def prime_check(a):
     elif(a>2):
         for i in range(2,a):
             if not(a%i):
-                return false
+                return False
     return True
 
     
-
-
-
-
-
-
-
-
-
 
 #New RSA Modulus 
 def n_value(p,q):
     n = p * q
     print("RSA Modulus(n) is:",n)
+    return n
    
 
 
 
 # Eulers Toitent Function 
-def r_value():
+def r_value(p,q):
     r= (p-1)*(q-1)
     print("Eulers Toitent(r) is:", r)
     print("*****************************************************")
-
+    return r
 
 #Euclid's Algorithm
 def eugcd(e,r):
@@ -101,6 +90,7 @@ def encrypt(pub_key,n_text):
     x=[]
     m=0
     for i in n_text:
+        i =str(i)
         if(i.isupper()):
             m = ord(i)-65
             c=(m**e)%n
@@ -119,6 +109,7 @@ def encrypt(pub_key,n_text):
 '''DECRYPTION ALGORITHM'''
 def decrypt(priv_key,c_text):
     d,n=priv_key
+    c_text=str(c_text)
     txt=c_text.split(',')
     x=''
     m=0
