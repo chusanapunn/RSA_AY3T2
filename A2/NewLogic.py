@@ -15,15 +15,16 @@ def input_prime(p,q):
 
 
 def prime_check(a):
-    if(a==2):
+    if isinstance(a, int):
+        if(a==2):
+            return True
+        elif((a<2) or ((a%2)==0)):
+            return False
+        elif(a>2):
+            for i in range(2,a):
+                if not(a%i):
+                    return False
         return True
-    elif((a<2) or ((a%2)==0)):
-        return False
-    elif(a>2):
-        for i in range(2,a):
-            if not(a%i):
-                return False
-    return True
 
     
 
@@ -74,14 +75,21 @@ def mult_inv(e,r):
         elif(s>0):
             print("s=%d."%(s))
         return s%r
-    
+#GCD
+'''CALCULATION OF GCD FOR 'e' CALCULATION.'''    
+def egcd(e,r):
+    while(r!=0):
+        e,r=r,e%r
+    return e
 
 #Value Calculation 
-def value_calculation():
+def value_calculation(r):
     for i in range(1,1000):
-        if(eugcd(i,r)==1):
+        if(egcd(i,r)==1):
             e=i
-        print("The value of e is:",e)
+        #check e calculation
+        #print("The value of e is:",e)
+    return e
 
 #Encryption
 '''ENCRYPTION ALGORITHM.'''
