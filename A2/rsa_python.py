@@ -154,6 +154,7 @@ def encrypt(pub_key,n_text):
     x=[]
     m=0
     for i in n_text:
+        i=str(i)
         if(i.isupper()):
             m = ord(i)-65
             c=(m**e)%n
@@ -164,7 +165,8 @@ def encrypt(pub_key,n_text):
             x.append(c)
         elif(i.isspace()):
             spc=400
-            x.append(400)
+            x.append(spc)
+        x.append(",")
     return x
      
  

@@ -46,13 +46,17 @@ def r_value(p,q):
 
 #Euclid's Algorithm
 def eugcd(e,r):
+    print("EUCLID'S ALGORITHM:")
     for i in range(1,r):
         while(e!=0):
             a,b=r//e,r%e
             if(b!=0):
                 print("%d = %d*(%d) + %d"%(r,a,e,b))
+                
             r=e
             e=b
+        return "%d = %d*(%d) + %d"%(r,a,e,b)
+    
  
 #Extended Euclidean Algorithm
 def eea(a,b):
@@ -66,15 +70,17 @@ def eea(a,b):
  
 #Multiplicative Inverse
 def mult_inv(e,r):
+    print("Extended Euclidean Algorithm:")
     gcd,s,_=eea(e,r)
     if(gcd!=1):
         return None
     else:
         if(s<0):
             print("s=%d. Since %d is less than 0, s = s(modr), i.e., s=%d."%(s,s,s%r))
+            return s%r
         elif(s>0):
             print("s=%d."%(s))
-        return s%r
+            return
 #GCD
 '''CALCULATION OF GCD FOR 'e' CALCULATION.'''    
 def egcd(e,r):
